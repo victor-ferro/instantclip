@@ -1323,20 +1323,22 @@ describe('Templates', () => {
     it('/templates (POST)', () => {
         return request(app.getHttpServer())
           .post('/templates')
+          .send(templates[1])
           .expect(201)
-          //.expect(templatesService.create(templates[1]))
+          .expect(templatesService.create(templates[1]))
       });
       it('/templates/:id (PATCH)', () => {
         return request(app.getHttpServer())
           .patch('/templates/A22')
+          .send(templates[1])
           .expect(200)
-          //.expect(templatesService.update('A22', templates[1]))
+          .expect(templatesService.update('A22', templates[1]))
       });
       it('/templates/:id (DELETE)', () => {
         return request(app.getHttpServer())
           .delete('/templates/A22')
           .expect(200)
-          //.expect(templatesService.remove('A22'))
+          .expect(templatesService.remove('A22'))
       });
 
     afterAll(async () => {
