@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TemplatesModule } from './templates/templates.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm'
+import { Template } from './templates/entities/template.entity';
 
 @Module({
   imports: [TemplatesModule,
@@ -12,10 +13,11 @@ import { DataSource } from 'typeorm'
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'root',
+      password: 'ferro-11',
       database: 'instantclip',
-      entities: [],
-      synchronize: true //TRUE --> only in dev. Pass to false in production
+      entities: [Template],
+      synchronize: true, //TRUE --> only in dev. Change to false in production
+      autoLoadEntities: true  //Cada entity registrada con forFeature() del objeto correspondiente sera agregada automaticamente
     })
   ],
   controllers: [AppController],
