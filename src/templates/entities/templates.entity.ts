@@ -1,4 +1,5 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Slot } from "./slot.entity";
 import { Template } from "./template.entity";
 
 @Entity()
@@ -16,4 +17,9 @@ export class Templates {
 
     @Column()
     soundUrl: string
+
+    @OneToMany(() => Slot, (slot) => slot.id)
+    slots: Slot[]
+
+
 }

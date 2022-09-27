@@ -10,6 +10,7 @@ import { User } from './users/entities/user.entity';
 import { Template } from './templates/entities/template.entity';
 import { Music } from './templates/entities/music.entity';
 import { Templates } from './templates/entities/templates.entity';
+import { Slot } from './templates/entities/slot.entity';
 
 @Module({
   imports: [TemplatesModule, AuthModule, UsersModule, 
@@ -20,7 +21,7 @@ import { Templates } from './templates/entities/templates.entity';
     username: 'root',
     password: 'ferro-11',
     database: 'instantclip',
-    entities: [User, Template, Music, Templates],
+    entities: [User, Template, Music, Templates, Slot],
     synchronize: true,
     autoLoadEntities: true
   })
