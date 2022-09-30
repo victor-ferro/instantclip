@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Template } from './model/template';
 
 @Controller('templates')
@@ -1207,24 +1208,27 @@ export class TemplatesController {
   
   ]
   
-  
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createTemplateDto: Template) {
     this.templates.push(createTemplateDto)
     return this.templates;
   }
+  
 
   @Get()
   findAll() {
     return this.templates;
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.templates.find(item => item.id == id)
     //return this.templates.filter(function(item){return item.id == id})
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTemplateDto: Template) {
     this.templates.forEach(function(item, i){
@@ -1235,6 +1239,7 @@ export class TemplatesController {
     return this.templates;
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     this.templates.forEach(function(item, i){
