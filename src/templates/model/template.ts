@@ -1,5 +1,7 @@
 //Data Transfer Object
 
+import { Double } from "typeorm"
+
 export class Template {
     id: string
     title: string

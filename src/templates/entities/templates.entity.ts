@@ -12,13 +12,13 @@ export class Templates {
     @PrimaryGeneratedColumn()
     id: number
 
-    @PrimaryColumn()
+    @Column()
     duration: number
 
     @Column()
     soundUrl: string
 
-    @OneToMany(() => Slot, (slot) => slot.id)
+    @OneToMany(() => Slot, (slot) => slot)
     slots: Slot[]
 
 

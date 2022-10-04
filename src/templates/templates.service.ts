@@ -1,4 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { DataSource, Repository } from 'typeorm';
+import { Templates } from './entities/templates.entity';
 import { Template } from './model/template';
 
 @Injectable()
@@ -1206,6 +1209,37 @@ export class TemplatesService {
       
       ]
 
+    
+    //NEW FUNCTIONS
+    constructor(
+        @InjectRepository(Template)
+        private templatesRepository: Repository<Template>,
+        @InjectRepository(Templates)
+        private templateesRepository: Repository<Templates>,
+        private dataSource: DataSource
+    ){}
+
+    findAll2(): Promise<Template[]>{
+        /*return this.templatesRepository.find({
+            relations:{
+                music: true,
+                template: true
+            }
+        });*/
+        return this.templatesRepository.createQueryBuilder("template")
+        .innerJoinAndSelect("template.music", "music")
+        .innerJoinAndSelect("template.template", "templates")
+        .getMany()
+    }
+
+    findOne2(id: string): Promise<Template>{
+        return this.templatesRepository.findOneBy({id});
+    }
+
+    async remove2(id: string): Promise<void>{
+        await this.templatesRepository.delete(id);
+    }
+    //PAST FUNCTIONS
     create(template: Template){
         this.templates.push(template)
         return this.templates

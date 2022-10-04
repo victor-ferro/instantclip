@@ -22,7 +22,9 @@ import { Slot } from './templates/entities/slot.entity';
     password: 'ferro-11',
     database: 'instantclip',
     entities: [User, Template, Music, Templates, Slot],
-    synchronize: true,
+    migrations: [],
+    migrationsTableName: "custom_migration_table",
+    //synchronize: true,   //try to implement Migrations
     autoLoadEntities: true
   })
   ],
@@ -30,5 +32,5 @@ import { Slot } from './templates/entities/slot.entity';
   providers: [AppService],
 })
 export class AppModule {
-  constructor(private dataSoruce: DataSource){}
+  //constructor(private dataSoruce: DataSource){}
 }

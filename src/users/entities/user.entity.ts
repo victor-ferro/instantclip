@@ -1,4 +1,3 @@
-import { Template } from 'src/templates/entities/template.entity';
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()

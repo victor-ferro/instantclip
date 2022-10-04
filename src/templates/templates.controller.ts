@@ -18,6 +18,11 @@ export class TemplatesController {
     return this.templatesService.findAll();
   }
 
+  @Get('new')
+  findAll2() {
+    return this.templatesService.findAll2();
+  }
+
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
