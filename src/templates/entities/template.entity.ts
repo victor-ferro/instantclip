@@ -1,4 +1,4 @@
-import { User } from 'src/users/entities/user.entity';
+import { User } from '../../users/entities/user.entity';
 import { Entity, Column, PrimaryColumn, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
 import { Music } from './music.entity';
 import { Templates } from './templates.entity';
@@ -17,8 +17,9 @@ export class Template {
     @ManyToOne(() => User, (user) => user.userId)
     creator: User
 
-    @ManyToOne(() => Music, (music) => music.id)
-    music: Music
+    //@ManyToOne(() => Music, (music) => music.id)
+    @Column()
+    music: string
 
     @Column()
     authorName: string

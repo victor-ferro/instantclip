@@ -22,7 +22,7 @@ import { Slot } from './templates/entities/slot.entity';
     password: 'ferro-11',
     database: 'instantclip',
     entities: [User, Template, Music, Templates, Slot],
-    migrations: [],
+    //migrations: [],
     migrationsTableName: "custom_migration_table",
     //synchronize: true,   //try to implement Migrations
     autoLoadEntities: true

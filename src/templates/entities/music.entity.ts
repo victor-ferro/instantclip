@@ -6,5 +6,5 @@ export class Music {
     id: number
 
     @Column()
-    cancion: string;
+    name: string;
 }
