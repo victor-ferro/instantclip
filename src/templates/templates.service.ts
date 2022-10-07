@@ -1227,7 +1227,6 @@ export class TemplatesService {
             }
         });*/
         return this.templatesRepository.createQueryBuilder("template")
-        .innerJoinAndSelect("template.music", "music")
         .innerJoinAndSelect("template.template", "templates")
         .getMany()
     }
