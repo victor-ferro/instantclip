@@ -14,6 +14,10 @@ export class AppController {
   }
 
   @Get()
+  async helloWorld(){
+    return "Hello World!"
+  }
+  @Get('/token')
   async token(){
     return this.authService.default_login()
   }

@@ -1,6 +1,5 @@
 import { User } from '../../users/entities/user.entity';
 import { Entity, Column, PrimaryColumn, ManyToOne, OneToOne, JoinColumn } from 'typeorm';
-import { Music } from './music.entity';
 import { Templates } from './templates.entity';
 
 @Entity()
@@ -30,8 +29,10 @@ export class Template {
     @Column()
     sample: string
 
-    @Column()
-    tags: string
+    @Column("simple-array")
+    tags: string[]
+    /*@Column('text', {array: true})
+    tags: string[]*/
 
     @OneToOne(() => Templates)
     @JoinColumn()

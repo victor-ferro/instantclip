@@ -18,6 +18,7 @@ export class Templates {
     @Column()
     soundUrl: string
 
+    //@Column("simple-array")
     @OneToMany(() => Slot, (slot) => slot)
     slots: Slot[]
 

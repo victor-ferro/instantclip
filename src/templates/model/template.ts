@@ -1,13 +1,11 @@
 //Data Transfer Object
 
-import { Double } from "typeorm"
-
 export class Template {
     id: string
     title: string
     thumbnailUrl: string
     creator: Creator
-    music: Music
+    music: string
     authorName: string
     authorAvatarUrl: string
     sample: string
@@ -16,9 +14,11 @@ export class Template {
 }
 
 export class Creator{
+    //userId: number
     name: string
     username: string
     avatarUrl: string
+    password: string
 }
 
 export class Music{
