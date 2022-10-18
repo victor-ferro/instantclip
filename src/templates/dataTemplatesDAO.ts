@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
-import { Template } from "./entities/template.entity";
+
 import { TemplateDAO } from "./interfaces/template-dao.interface";
+import { Template, Templates } from "./model/template";
 
 @Injectable()
 export class DataTemplatesDAO implements TemplateDAO {
@@ -1481,18 +1482,32 @@ export class DataTemplatesDAO implements TemplateDAO {
       ]
 
       findAll(): Promise<Template[]> {
-          return 
+        return Promise.resolve(this.templates)
       }
 
       create(template: Template): void {
-          return
+        this.templates.push(template)
       }
 
       findOne(id: string): Promise<Template> {
-          return
+        return Promise.resolve(this.templates.find(item => item.id == id))
       }
 
-      remove(id: string): Promise<void> {
-          return 
+      async remove(id: string): Promise<void> {
+          await this.templates.forEach(function(item, i){
+            if(item.id == id){
+                this.splice(i, 1)
+            }
+          }, this.templates)
+      }
+
+      update(template: Template, id: string): Promise<Template[]> {
+          this.templates.forEach(function(item, i){
+            if(item.id == id){
+                this[i] = template
+            }
+          }, this.templates)
+
+          return Promise.resolve(this.templates)
       }
 }

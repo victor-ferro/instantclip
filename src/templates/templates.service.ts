@@ -1,27 +1,16 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { DataTemplatesDAO } from './dataTemplatesDAO';
-import { Template } from './entities/template.entity';
-import { Templates } from './entities/templates.entity';
-import { MySQLTemplateDAO } from './MySQLTemplateDAO';
+import { Inject, Injectable } from '@nestjs/common';
+import { TemplateDAO } from './interfaces/template-dao.interface';
+import { Template } from './model/template';
 import { TemplatesFindOne } from './templatesFindOne';
 
-
-//var templates;
 @Injectable()
 export class TemplatesService {
-
-    //NEW FUNCTIONS
     constructor(
-        private templateDAO: DataTemplatesDAO,
+        @Inject('TemplateDAO')
+        private templateDAO: TemplateDAO,
         private templatesFindOne: TemplatesFindOne
-    ){
-        //templates = this.templateDAO.findAll()
-    }
-    findOne3(id: string) {
-        var template = this.findAll();
-        return this.templatesFindOne.getTemplatesWithTagLengthMoreThan(template, id);
-    }
+    ){}
+
     findAll(): Promise<Template[]>{
         return this.templateDAO.findAll();
     }
@@ -35,5 +24,9 @@ export class TemplatesService {
 
     remove(id: string):Promise<void>{
         return this.templateDAO.remove(id);
+    }
+
+    update(id: string, template: Template): Promise<Template[]>{
+        return this.templateDAO.update(template, id);
     }
 }

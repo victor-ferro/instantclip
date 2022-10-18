@@ -34,7 +34,7 @@ export class Template {
     /*@Column('text', {array: true})
     tags: string[]*/
 
-    @OneToOne(() => Templates)
+    @OneToOne(() => Templates, {cascade: true})
     @JoinColumn()
     template: Templates
 

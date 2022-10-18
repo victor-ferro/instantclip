@@ -14,7 +14,7 @@ export class Template {
 }
 
 export class Creator{
-    //userId: number
+    userId: number
     name: string
     username: string
     avatarUrl: string
@@ -26,12 +26,14 @@ export class Music{
 }
 
 export class Templates{
+    id: number
     duration: number
     soundUrl: string
     slots: Slot[]
 }
 
 export class Slot{
+    id: number
     time: number
     type: string
 }

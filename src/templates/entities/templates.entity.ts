@@ -12,15 +12,13 @@ export class Templates {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column("decimal", { precision: 5, scale: 2 })
     duration: number
 
     @Column()
     soundUrl: string
 
-    //@Column("simple-array")
-    @OneToMany(() => Slot, (slot) => slot)
-    slots: Slot[]
-
+    @OneToMany(() => Slot, (slot) => slot.id, {cascade: true})
+    slots: Array<Slot>
 
 }
