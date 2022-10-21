@@ -15,40 +15,12 @@ export class UsersService {
     private dataSource: DataSource
   ){}
 
-  private readonly users = [
-    {
-      userId: 1,
-      name: 'john',
-      avatarUrl: 'johnjohn',  
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      name: 'toni',
-      avatarUrl: 'toni_11',
-      username: 'antonio',
-      password: 'lopez',
-    },
-    {
-      userId: 3,
-      name: 'victor',
-      avatarUrl: 'victor_11',
-      username: 'victor',
-      password: 'fernandez'
-    }
-  ];
-
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find(user => user.username === username);
-  }
-
   findAll():Promise<User[]> {
     return this.usersRepository.find();
   }
 
-  findJustOne(id: number): Promise<User> {
-    return this.usersRepository.findOneBy({ 'userId': id });
+  findOne(name: string): Promise<User> {
+    return this.usersRepository.findOneBy({ 'username': name });
   }
 
   async remove(id: string): Promise<void> {
