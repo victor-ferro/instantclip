@@ -1,28 +1,18 @@
 //Data Transfer Object
 
+import { User } from "src/users/model/user"
+
 export class Template {
     id: string
     title: string
     thumbnailUrl: string
-    creator: Creator
+    creator: User
     music: string
     authorName: string
     authorAvatarUrl: string
     sample: string
     tags: string[]
     template: Templates
-}
-
-export class Creator{
-    userId: number
-    name: string
-    username: string
-    avatarUrl: string
-    password: string
-}
-
-export class Music{
-    name: string
 }
 
 export class Templates{
