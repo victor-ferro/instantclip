@@ -1,11 +1,13 @@
 //Data Transfer Object
 
+import { User } from "../../users/model/user"
+
 export class Template {
     id: string
     title: string
     thumbnailUrl: string
-    creator: Creator
-    music: Music
+    creator: User
+    music: string
     authorName: string
     authorAvatarUrl: string
     sample: string
@@ -13,23 +15,15 @@ export class Template {
     template: Templates
 }
 
-export class Creator{
-    name: string
-    username: string
-    avatarUrl: string
-}
-
-export class Music{
-    name: string
-}
-
 export class Templates{
+    id: number
     duration: number
     soundUrl: string
     slots: Slot[]
 }
 
 export class Slot{
+    id: number
     time: number
     type: string
 }
