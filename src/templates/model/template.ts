@@ -5,7 +5,7 @@ export class Template {
     title: string
     thumbnailUrl: string
     creator: Creator
-    music: Music
+    music: string
     authorName: string
     authorAvatarUrl: string
     sample: string
@@ -14,9 +14,11 @@ export class Template {
 }
 
 export class Creator{
+    userId: number
     name: string
     username: string
     avatarUrl: string
+    password: string
 }
 
 export class Music{
@@ -24,12 +26,14 @@ export class Music{
 }
 
 export class Templates{
+    id: number
     duration: number
     soundUrl: string
     slots: Slot[]
 }
 
 export class Slot{
+    id: number
     time: number
     type: string
 }
