@@ -1,6 +1,6 @@
 //Data Transfer Object
 
-import { User } from "src/users/model/user"
+import { User } from "../../users/model/user"
 
 export class Template {
     id: string
