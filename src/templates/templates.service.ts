@@ -1,4 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { Slot } from './entities/slot.entity';
+import { Templates } from './entities/templates.entity';
 import { TemplateDAO } from './interfaces/template-dao.interface';
 import { Template } from './model/template';
 import { TemplatesFindOne } from './templatesFindOne';
@@ -29,4 +31,9 @@ export class TemplatesService {
     update(id: string, template: Template): Promise<Template[]>{
         return this.templateDAO.update(template, id);
     }
+
+    createMany(templates: Template[]): void {
+        return this.templateDAO.createMany(templates)
+    }
+
 }

@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { Slot } from "./entities/slot.entity";
 
 import { TemplateDAO } from "./interfaces/template-dao.interface";
 import { Template, Templates } from "./model/template";
@@ -1509,5 +1510,9 @@ export class DataTemplatesDAO implements TemplateDAO {
           }, this.templates)
 
           return Promise.resolve(this.templates)
+      }
+
+      createMany(templates: Template[]): void {
+          this.templates.concat(templates)
       }
 }

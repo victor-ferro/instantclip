@@ -18,7 +18,7 @@ export class Templates {
     @Column()
     soundUrl: string
 
-    @OneToMany(() => Slot, (slot) => slot.id, {cascade: true})
+    @OneToMany(() => Slot, (slot) => slot.template, {cascade: true, onDelete: 'CASCADE', onUpdate: 'CASCADE'})
     slots: Array<Slot>
 
 }

@@ -19,10 +19,9 @@ export class UsersController {
         return this.usersService.findOne(username)
     }
 
-
     @Post()
     create(@Body() user: User){
-        this.usersService.create(user)
+        return this.usersService.create(user)
     }
 
     @UseGuards(JwtAuthGuard)
@@ -35,5 +34,10 @@ export class UsersController {
     @Delete(":username")
     delete(@Param('username') username){
         this.usersService.remove(username);
+    }
+
+    @Post("multiple")
+    createMany(@Body() users: User[]){
+        this.usersService.createMany(users);
     }
 }

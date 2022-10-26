@@ -4,7 +4,7 @@ import { DataTemplatesDAO } from './dataTemplatesDAO';
 import { Slot } from './entities/slot.entity';
 import { Template } from './entities/template.entity';
 import { Templates } from './entities/templates.entity';
-import { MySQLTemplateDAO } from './MySQLTemplateDAO';
+import { MySQLTemplateDAO } from './mySQLTemplateDAO';
 import { TemplatesController } from './templates.controller';
 import { TemplatesService } from './templates.service';
 import { TemplatesFindOne } from './templatesFindOne';

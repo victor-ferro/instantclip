@@ -2,9 +2,11 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { InjectRepository } from '@nestjs/typeorm';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { DataTemplatesDAO } from './dataTemplatesDAO';
+import { Slot } from './entities/slot.entity';
+import { Templates } from './entities/templates.entity';
 import { Template } from './model/template';
 
-import { MySQLTemplateDAO } from './MySQLTemplateDAO';
+import { MySQLTemplateDAO } from './mySQLTemplateDAO';
 import { TemplatesService } from './templates.service';
 import { TemplatesFindOne } from './templatesFindOne';
 
@@ -20,6 +22,11 @@ export class TemplatesController {
     return this.templatesService.create(createTemplateDto);
   }
 
+  @Post("many")
+  createMany(@Body() createTemplatesDto: Template[]) {
+    return this.templatesService.createMany(createTemplatesDto);
+  }
+
   @Get()
   findAll() {
     return this.templatesService.findAll();
@@ -31,7 +38,7 @@ export class TemplatesController {
     return this.templatesService.findOne(id);
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTemplateDto: Template) {
     return this.templatesService.update(id, updateTemplateDto);

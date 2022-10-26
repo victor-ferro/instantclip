@@ -6,13 +6,13 @@ import { DataTemplatesDAO } from "./dataTemplatesDAO";
 //import { Template } from "./model/template";
 import { Templates } from "./entities/templates.entity";
 import { Template } from "./entities/template.entity";
+import { Slot } from "./entities/slot.entity";
 
 @Injectable()
 export class MySQLTemplateDAO implements TemplateDAO{
     constructor(
         @InjectRepository(Template)
         private templatesRepository: Repository<Template>,
-        //private dataSource: DataSource,
     ){}
 
     
@@ -34,7 +34,9 @@ export class MySQLTemplateDAO implements TemplateDAO{
     
     
     create(template: Template): void {
-        this.templatesRepository.insert(template)
+        this.templatesRepository.save(template).catch((err: any) => {
+            console.log(err)
+        })
     }
 
     findOne(id: string): Promise<Template> {
@@ -62,33 +64,23 @@ export class MySQLTemplateDAO implements TemplateDAO{
         await (await this.templatesRepository.delete(id));
     }
 
-    async update(template: Template, id: string): Promise<Template[]> {
-        /*await this.templatesRepository.createQueryBuilder()
+    async update(template: Template): Promise<Template[]> {  
+        await this.templatesRepository.save(template).catch((err: any) => {
+            console.log(err)
+        });
+        return this.findAll();
+
+         /*await this.templatesRepository.createQueryBuilder()
                 .update(Template)
                 .set(template)
                 .where("id = :id", { id: id })
                 .execute()*/
-
-        await this.templatesRepository.update({id}, template)
-        return this.findAll()
     }
 
-    /*async createMany(templates: Template[]) {
-        const queryRunner = this.dataSource.createQueryRunner();
-      
-        await queryRunner.connect();
-        await queryRunner.startTransaction();
-        try {
-          await queryRunner.manager.save(templates[0]);
-          await queryRunner.manager.save(templates[1]);
-      
-          await queryRunner.commitTransaction();
-        } catch (err) {
-          // since we have errors lets rollback the changes we made
-          await queryRunner.rollbackTransaction();
-        } finally {
-          // you need to release a queryRunner which was manually instantiated
-          await queryRunner.release();
-        }
-      }*/
+    async createMany(template: Template[]){
+        await this.templatesRepository.save(template).catch((err: any) => {
+            console.log(err);
+        })
+    }
+
 }

@@ -1,9 +1,10 @@
-import { DataSource, EntitySubscriberInterface, EventSubscriber, InsertEvent } from "typeorm";
+import { DataSource, EntitySubscriberInterface, EventSubscriber, InsertEvent, UpdateEvent } from "typeorm";
+import { BcryptOperator } from "./bcryptOperator";
 import { User } from "./entities/user.entity";
 
 @EventSubscriber()
 export class UserSubscriber implements EntitySubscriberInterface<User>{
-    constructor(dataSource: DataSource){
+    constructor(dataSource: DataSource, private bcryptOperator: BcryptOperator){
         dataSource.subscribers.push(this);
     }
 
@@ -11,7 +12,13 @@ export class UserSubscriber implements EntitySubscriberInterface<User>{
         return User;
     }
 
-    beforeInsert(event:InsertEvent<User>){
+    async beforeInsert(event:InsertEvent<User>){
+        event.entity.password = await this.bcryptOperator.createHash(event.entity.password)
         console.log('BEFORE USER INSERTED: ', event.entity)
     }
+    async beforeUpdate(event: UpdateEvent<User>) {
+        event.entity.password = await this.bcryptOperator.createHash(event.entity.password)
+        console.log('BEFORE USER UPDATE: ', event.entity)
+    }
+
 }
