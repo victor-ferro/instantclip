@@ -19,7 +19,7 @@ export class RolesGuard extends JwtAuthGuard {
         if(!requiredRoles){
             return true;
         }
-        await super.canActivate(context);
+        //await super.canActivate(context);
         const {user} = context.switchToHttp().getRequest();
         return user?.roles.includes(requiredRoles);//requiredRoles.some((role) => user.roles?.includes(role));
     }

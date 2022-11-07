@@ -7,6 +7,7 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { Role } from 'src/roles/role.enum';
 import { Roles } from 'src/roles/roles.decorator';
 import RoleGuard from 'src/roles/role.guard';
+import { Auth } from 'src/auth/auth.decorator';
 
 
 @Controller('users')
@@ -15,7 +16,8 @@ export class UsersController {
 
     @Get()
     //@UseGuards(RoleGuard(Role.User))
-    @Roles(Role.User)
+    //@Roles(Role.User)
+    @Auth(Role.User)
     findAll(){
         return this.usersService.findAll();
     }
