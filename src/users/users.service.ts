@@ -19,7 +19,7 @@ export class UsersService {
   }
 
   findOne(name: string): Promise<User> {
-    return this.usersRepository.findOneBy({ 'username': name });
+    return this.usersRepository.findOne({where:{username: name} });
   }
 
   async remove(username: string): Promise<void> {
