@@ -1,29 +1,50 @@
 import { Injectable } from '@nestjs/common';
-
-// This should be a real class/interface representing a user entity
-export type User = any;
+import { InjectRepository } from '@nestjs/typeorm';
+import { DataSource, Repository } from 'typeorm';
+import { BcryptOperator } from './bcryptOperator';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
-  private readonly users = [
-    {
-      userId: 1,
-      username: 'john',
-      password: 'changeme',
-    },
-    {
-      userId: 2,
-      username: 'antonio',
-      password: 'lopez',
-    },
-    {
-      userId: 3,
-      username: 'victor',
-      password: 'fernandez'
-    }
-  ];
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find(user => user.username === username);
+  constructor(
+    @InjectRepository(User)
+    private usersRepository: Repository<User>,
+    private dataSource: DataSource,
+    private bcryptOperator: BcryptOperator,
+  ){}
+
+  findAll():Promise<User[]> {
+    return this.usersRepository.find();
   }
+
+  findOne(name: string): Promise<User> {
+    return this.usersRepository.findOneBy({ 'username': name });
+  }
+
+  async remove(username: string): Promise<void> {
+    await this.usersRepository.delete(username);
+  }
+
+  async create(user: User){
+    this.usersRepository.insert(user).catch((err: any)=> {
+      console.log(err);
+      //return err.sqlMessage;
+    });
+  }
+
+  async compare(realPass: string, hashPass: string){
+    return await this.bcryptOperator.compare(realPass, hashPass);
+  }
+
+  async update(user: User, username: string){
+    await this.usersRepository.update({username: username}, user)
+  }
+
+  async createMany(users: User[]) {
+    this.usersRepository.save(users).catch((err: any) => {
+      console.log(err);
+    })
+  } 
+
 }
