@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TypeOrmModule, TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { config } from 'dotenv';
+import { RolesModule } from './roles/roles.module';
 
 config();
 
@@ -44,7 +45,7 @@ class TypeOrmConfigService implements TypeOrmOptionsFactory {
       //synchronize: true, //shouldn't be used in production. Useful during debug and development. Indicates if database schema should be auto created on every application launch
       autoLoadEntities: true
     })
-  }),
+  }), RolesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

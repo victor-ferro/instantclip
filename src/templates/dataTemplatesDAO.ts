@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { Role } from "src/roles/role.enum";
 import { Slot } from "./entities/slot.entity";
 
 import { TemplateDAO } from "./interfaces/template-dao.interface";
@@ -13,6 +14,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "SATURDAY NIGHT OUT",
               "thumbnailUrl": "https://instantclip.app/app_images/saturdaynight.jpeg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "fulltimefemme",
@@ -67,6 +69,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "A MI MANERA",
               "thumbnailUrl": "https://instantclip.app/app_images/conri.jpeg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "emgy.fm",
@@ -157,6 +160,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "CITY RUNAWAY",
               "thumbnailUrl": "https://instantclip.app/app_images/runaway.jpeg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "fulltimefemme",
@@ -259,6 +263,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Good Moments",
               "thumbnailUrl": "https://instantclip.app/app_images/goodmoments.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "Sabrina",
@@ -321,6 +326,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "SUMMER ON MY MIND",
               "thumbnailUrl": "https://instantclip.app/app_images/summermymind.jpeg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "fulltimefemme",
@@ -443,6 +449,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Paradise on Earth",
               "thumbnailUrl": "https://instantclip.app/app_images/paradise.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "Sabrina",
@@ -505,6 +512,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "LIFE IN THE CITY",
               "thumbnailUrl": "https://instantclip.app/app_images/lifeinthecity.jpeg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "fulltimefemme",
@@ -563,6 +571,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Symphony",
               "thumbnailUrl": "https://instantclip.app/app_images/symphony.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "Sabrina",
@@ -629,6 +638,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Miss you",
               "thumbnailUrl": "https://instantclip.app/app_images/abcd.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "travelwithvivien",
@@ -695,6 +705,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": " Gangsta's Paradise",
               "thumbnailUrl": "https://instantclip.app/app_images/gangsta.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "Sabrina",
@@ -769,6 +780,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Piano trips",
               "thumbnailUrl": "https://instantclip.app/app_images/a1.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "tonilopezmr",
@@ -848,6 +860,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Good part",
               "thumbnailUrl": "https://instantclip.app/app_images/a3.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "tonilopezmr",
@@ -879,6 +892,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Unexpected Journey",
               "thumbnailUrl": "https://instantclip.app/app_images/a4.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "tonilopezmr",
@@ -958,6 +972,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Let's go",
               "thumbnailUrl": "https://instantclip.app/app_images/a7.jpeg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "tonilopezmr",
@@ -1009,6 +1024,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "So Alone",
               "thumbnailUrl": "https://instantclip.app/app_images/soalone.jpeg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "travelwithvivien",
@@ -1079,6 +1095,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Sunset",
               "thumbnailUrl": "https://instantclip.app/app_images/sunset.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "roadsandrivers.de",
@@ -1129,6 +1146,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Live your Life",
               "thumbnailUrl": "https://instantclip.app/app_images/yourlife.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "tonilopezmr",
@@ -1207,6 +1225,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Steps",
               "thumbnailUrl": "https://instantclip.app/app_images/steps.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "tonilopezmr",
@@ -1281,6 +1300,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "My Valentine",
               "thumbnailUrl": "https://instantclip.app/app_images/myvalentine.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "its_jal",
@@ -1339,6 +1359,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Application",
               "thumbnailUrl": "https://instantclip.app/app_images/application.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "sigit.ar13",
@@ -1409,6 +1430,7 @@ export class DataTemplatesDAO implements TemplateDAO {
               "title": "Things of Beauty",
               "thumbnailUrl": "https://instantclip.app/app_images/beauty.jpg",
               "creator": {
+                  "roles": [Role.User],
                   "userId": 1,
                   "password": "1234",
                   "name": "its_jal",
