@@ -4,12 +4,15 @@ import { UsersService } from './users.service';
 import { UseGuards } from '@nestjs/common';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import RoleGuard from 'src/roles/role.guard';
+import { Role } from 'src/roles/role.enum';
 
 @Controller('users')
 export class UsersController {
     constructor(private readonly usersService: UsersService){}
 
     @Get()
+    @UseGuards(RoleGuard(Role.User))
     findAll(){
         return this.usersService.findAll();
     }

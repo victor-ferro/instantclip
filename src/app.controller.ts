@@ -10,7 +10,7 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req, @Response() res) {
-    const cookie = this.authService.login(req.user);
+    const cookie = await this.authService.login(req.user);
     res.setHeader('Set-Cookie', cookie);
     return res.send(cookie);
   }
@@ -18,7 +18,7 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/logout')
   async logout(@Request() req, @Response() res) {
-    res.setHeader('Set-Cookie', this.authService.logout());
+    res.setHeader('Set-Cookie', await this.authService.logout());
     return res.sendStatus(200);
   }
 
