@@ -6,5 +6,5 @@ export class User{
     username: string
     avatarUrl: string
     password: string
-    roles: Role
+    roles: Role[]
 }

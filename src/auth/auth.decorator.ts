@@ -6,12 +6,11 @@ import { ROLES_KEY } from "src/roles/roles.decorator";
 import { RolesGuard } from "src/roles/roles.guard";
 import { JwtAuthGuard } from "./jwt-auth.guard";
 
-export function Auth(role: Role){
+export function Auth(...role: Role[]){
     return applyDecorators(
         SetMetadata(ROLES_KEY, role),
         UseGuards(JwtAuthGuard, RolesGuard),
-        ApiBearerAuth(),
-        ApiUnauthorizedResponse({ description: 'Unauthorized '})
+        //ApiBearerAuth(),
+        //ApiUnauthorizedResponse({ description: 'Unauthorized '})
     );
 }
-//export const Auath = (roles: Role) => SetMetadata(ROLES_KEY, roles)

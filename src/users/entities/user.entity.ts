@@ -28,5 +28,5 @@ export class User {
     enum: Role,
     default: Role.User
   })
-  roles: Role
+  roles: Role[]
 }
