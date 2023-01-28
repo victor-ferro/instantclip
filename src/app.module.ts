@@ -1,4 +1,4 @@
-import { Injectable, Module } from '@nestjs/common';
+import { Injectable, MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TemplatesModule } from './templates/templates.module';
@@ -7,6 +7,9 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule, TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 import { config } from 'dotenv';
 import { RolesModule } from './roles/roles.module';
+import * as cookieParser from 'cookie-parser';
+import { UsersController } from './users/users.controller';
+import { TemplatesController } from './templates/templates.controller';
 
 config();
 
@@ -50,5 +53,11 @@ class TypeOrmConfigService implements TypeOrmOptionsFactory {
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(cookieParser())
+      .forRoutes(UsersController, TemplatesController)
+  }
+
 }

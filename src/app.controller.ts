@@ -1,7 +1,8 @@
-import { Controller, Request, Post, UseGuards, Get, Response } from '@nestjs/common';
+import { Controller, Request, Post, UseGuards, Get, Response, Body } from '@nestjs/common';
 import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
+import { User } from './users/model/user';
 
 @Controller()
 export class AppController {
@@ -9,7 +10,8 @@ export class AppController {
 
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
-  async login(@Request() req, @Response() res) {
+  async login(@Body() b: User, @Request() req, @Response() res) {
+    console.log(b)
     const cookie = await this.authService.login(req.user);
     res.setHeader('Set-Cookie', cookie);
     return res.send(cookie);
